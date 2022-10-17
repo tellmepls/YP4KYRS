@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск сотрудников</title>
+</head>
+<body>
+    <a href="/employee">Назад</a>
+
+    <div>
+        <div th:each="el: ${searchRes}">
+            <h2 th:text="'ID: ' + ${el.getId()}"></h2>
+            <p th:text="'Фамилия: ' + ${el.getSurname()}"></p>
+            <p th:text="'Имя: ' + ${el.getName}"></p>
+            <p th:text="'Отчество: ' + ${el.getMiddleName()}"></p>
+            <p th:text="'Паспорт: ' + ${el.getPassport()}"></p>
+            <p th:text="'Дата рождения: ' + ${el.getBirthday()}"></p>
+        </div>
+    </div>
+</body>
+</html>

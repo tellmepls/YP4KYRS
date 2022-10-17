@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <header>
+        <a href="/employee">Таблица сотрудников</a>
+    </header>
+    <body>
+    <h1>Сотрудники</h1>
+
+    <a href="/employee/add">Дабвить сотрудника</a><br>
+
+    <form action="/employee/filterACCU" method="get">
+        <input name="search" type="text" autocomplete="off" placeholder="Точный поиск по Фамилии">
+        <input type="submit" value="Найти">
+    </form>
+
+    <form action="/employee/filter" method="get">
+        <input name="search" type="text" autocomplete="off" placeholder="Неточный поиск по Фамилии">
+        <input type="submit" value="Найти">
+    </form>
+
+    <div>
+        <div th:each="el: ${list_employee}">
+            <h2 th:text="'ID: ' + ${el.getId()}"></h2>
+            <p th:text="'Фамилия: ' + ${el.getSurname()}"></p>
+            <p th:text="'Имя: ' + ${el.getName}"></p>
+            <p th:text="'Отчество: ' + ${el.getMiddleName()}"></p>
+            <p th:text="'Паспорт: ' + ${el.getPassport()}"></p>
+            <p th:text="'Дата рождения: ' + ${el.getBirthday()}"></p>
+        </div>
+    </div>
+    </body>
+</html>
