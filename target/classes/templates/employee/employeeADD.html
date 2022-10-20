@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление сотрудников</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="headers/head :: osnova"></div>
+</head>
+<body>
+    <form th:object="${employee}" method="post">
+        <label>
+            <input th:field="*{surname}" name="surname" type="text" placeholder="Фамилия" style="margin:10px">
+            <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color: red"></div><br>
+
+            <input th:field="*{name}" name="name" type="text" placeholder="Имя" style="margin:10px">
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></div><br>
+
+            <input th:field="*{middleName}" name="middleName" type="text" placeholder="Отчество" style="margin:10px">
+            <div th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}" style="color: red"></div><br>
+
+            <input th:field="*{passport}" name="passport" type="text" maxlength="11" placeholder="Серия/номер паспорта" style="margin:10px">
+            <div th:if="${#fields.hasErrors('passport')}" th:errors="*{passport}" style="color: red"></div><br>
+
+            <input th:field="*{birthday}" name="birthday" type="text" placeholder="гггг-мм-дд" style="margin:10px">
+            <div th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" style="color: red"></div><br><br>
+
+            <input style="margin:10px" type="submit" value="Добавить сотрудника">
+        </label>
+    </form>
+
+    <a style="margin:10px" href="/employee">Отмена</a>
+</body>
+</html>

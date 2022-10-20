@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Подробнее</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <div th:insert="headers/head :: osnova"></div>
+  <a class="btn" style="background:lightblue"  th:href="'/employee'" >Назад</a>
+</head>
+
+<body>
+<div>
+  <div th:each="el: ${employee}" s>
+    <h2 th:text="'ID: ' + ${el.getId()}"></h2>
+    <p th:text="'Фамилия: ' + ${el.getSurname()}"></p>
+    <p th:text="'Имя: ' + ${el.getName}"></p>
+    <p th:text="'Отчество: ' + ${el.getMiddleName()}"></p>
+    <p th:text="'Паспорт: ' + ${el.getPassport()}"></p>
+    <p th:text="'Дата рождения: ' + ${el.getBirthday()}"></p>
+    <a class = "btn" style="background:lightblue" th:href="'/employee/employeeEdit/' + ${el.getId()}" >Редактирование</a>
+    <a class = "btn"   style="background:lightblue; margin-left:10px" th:href="'/employee/delete/' + ${el.getId()}" >Удаление</a>
+  </div>
+  <br>
+
+</div>
+</body>
+</html>
