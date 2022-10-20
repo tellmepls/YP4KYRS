@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <div th:insert="headers/head :: osnova"></div>
+</head>
+<body>
+<h1 style="text-align:Center">Сотрудники</h1>
+
+
+<a href="/employee/add" class="btn" style="background:LightGreen;margin-left:10px">Дабвить сотрудника</a><br>
+<form action="/employee/filterACCU" method="get">
+    <input name="search" type="text" style="margin: 10px" autocomplete="off" placeholder="Точный поиск по Фамилии">
+    <input type="submit" value="Найти" style="margin: 10px">
+</form>
+
+<form action="/employee/filter" method="get">
+    <input style="margin: 10px" name="search" type="text" autocomplete="off" placeholder="Неточный поиск по Фамилии">
+    <input style="margin: 10px" type="submit" value="Найти">
+</form>
+
+<div>
+    <div th:each="el: ${list_employee}" style="margin: 10px">
+        <h2 th:text="'ID: ' + ${el.getId()}"></h2>
+        <p th:text="'ФИО: ' + ${el.getSurname()} + ' ' + ${el.getName} + ' '     + ${el.getMiddleName()}"></p>
+        <a th:href="'/employee/details/' + ${el.getId()}" class="btn" style="background:lightBlue">Подробнее</a>
+    </div>
+</div>
+
+</body>
+</html>
